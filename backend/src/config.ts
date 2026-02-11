@@ -7,18 +7,23 @@ export const config = {
     port: parseInt(process.env.PORT || '3001', 10),
     nodeEnv: process.env.NODE_ENV || 'development',
 
-    // Google
-    googleMapsApiKey: process.env.GOOGLE_MAPS_API_KEY || '',
+    // Geolocation Options (choose one):
+    // Option 1: Nominatim (slower, free, no auth needed)
+    nominatimUrl: process.env.NOMINATIM_URL || 'https://nominatim.openstreetmap.org',
+    
+    // Option 2: Photon (FAST alternative to Nominatim, free, recommended!)
+    // Photon is ~10x faster than Nominatim and uses same OSM data
+    photonUrl: process.env.PHOTON_URL || 'https://photon.komoot.io',
+    
+    // Option 3: Pelias (self-hosted, fastest when local)
+    peliasUrl: process.env.PELIAS_URL || 'http://localhost:4000',
+    
+    // Geolocation provider (default: 'photon' for speed)
+    geocoderProvider: process.env.GEOCODER_PROVIDER || 'photon',
 
-    // OpenRouteService
+    // OpenRouteService - Free tier available
     orsApiKey: process.env.ORS_API_KEY || '',
-
-    // RapidAPI
-    rapidApiKey: process.env.RAPIDAPI_KEY || '',
-
-    // Amadeus
-    amadeusClientId: process.env.AMADEUS_CLIENT_ID || '',
-    amadeusClientSecret: process.env.AMADEUS_CLIENT_SECRET || '',
+    orsUrl: process.env.ORS_URL || 'https://api.openrouteservice.org',
 
     // Supabase
     supabaseUrl: process.env.SUPABASE_URL || '',

@@ -138,12 +138,12 @@ class ReliabilityPredictor:
                 self.season_encoder = encoders["season"]
                 self.time_encoder = encoders["time"]
             self.is_loaded = True
-            print("✅ Models loaded from disk")
+            print("[OK] Models loaded from disk")
         else:
             self.train()
 
     def train(self):
-        print("🏋️ Training XGBoost models...")
+        print("[TRAINING] Training XGBoost models...")
         df = self._generate_training_data(n_samples=10000)
 
         # Fit encoders
@@ -193,7 +193,7 @@ class ReliabilityPredictor:
             }, f)
 
         self.is_loaded = True
-        print("✅ Models trained and saved")
+        print("[OK] Models trained and saved")
 
     def _prepare_features(self, route: str, transport_type: str, date: str, time_of_day: str) -> np.ndarray:
         route_hash = self._route_hash(route)
